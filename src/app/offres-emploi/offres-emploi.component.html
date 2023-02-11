@@ -1,0 +1,17 @@
+
+<div class="form-group">
+  <input type="text" class="form-control" [(ngModel)]="entrepriseSearch" placeholder="Rechercher par entreprise">
+</div>
+
+<div class="card-deck">
+  <div class="card" *ngFor="let emploi of listeEmploi">
+    <div *ngIf="!entrepriseSearch || emploi.entreprise.toLowerCase().includes(entrepriseSearch.toLowerCase())">
+      <div class="card-body">
+        <h5 class="card-title">{{ emploi.titre }}</h5>
+        <p class="card-text">Reference: {{ emploi.reference }}</p>
+        <p class="card-text">Entreprise: {{ emploi.entreprise }}</p>
+        <button class="btn btn-primary" [disabled]="!emploi.etat">Postuler</button>
+      </div>
+    </div>
+  </div>
+</div>

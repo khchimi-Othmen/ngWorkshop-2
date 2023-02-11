@@ -1,0 +1,21 @@
+<div class="form-group">
+  <label >Nombre total d'articles : </label>
+  <input type="text" [value]="nombreArticles" disabled>
+</div>
+<input type="number" [(ngModel)]="limit" (ngModelChange)="updateLimit()">
+<ul>
+  <li *ngFor="let article of listeArticles | slice:0:limit">
+    {{ article.titre }}
+  </li>
+</ul>
+
+
+<div *ngFor="let article of listeArticles">
+  <div [ngClass]="{'education-class': article.categorie === 'Education'}">
+    <h3>{{ article.titre }}</h3>
+    <p>{{ article.contenu }}</p>
+    <p>Auteur: {{ article.auteur }}</p>
+    <p>Date: {{ article.date }}</p>
+    <p>Catégorie: {{ article.categorie }}</p>
+  </div>
+</div>
